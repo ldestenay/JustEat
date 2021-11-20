@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ENG">
+<head>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+    <title>JustEat</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+    <link rel="stylesheet" href="/stylesheets/jquery-mobile-theme/themes/justeat_theme.min.css"/>
+    <link rel="stylesheet" href="/stylesheets/jquery-mobile-theme/themes/jquery.mobile.icons.min.css"/>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel="icon" href="/images/justeat.png"/>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/core.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/sha256.js"></script>
+    <script src="/scripts/main.js"></script>
+
+</head>
+<body>
+
+<div data-role="page">
+
+    <header>
+        <img src="/images/Logos.png" class="just-eat-logo"/>
+    </header>
+
+    <div role="main" class="ui-content">
+        <h2 class="title">Welcome to the JustEat Website!</h2>
+    </div><!-- /content -->
+    <div class="form">
+        <div data-role="fieldcontain">
+            <label for="username">Username</label>
+            <input type="text" id="username"/>
+        </div>
+        <div data-role="fieldcontain">
+            <label for="password">Password</label>
+            <input type="password" id="password"/>
+        </div>
+
+        <button id="loginStart" class="ui-btn">Login</button>
+        <button id="registerStart" class="ui-btn">Register</button>
+    </div>
+
+    <div id="output">
+
+    </div>
+
+    <footer id="footerLoginPage">
+    </footer><!-- /footer -->
+</div><!-- /page -->
+
+<div data-role="page" id="customer">
+
+    <div class="center-div">
+        <div role="header">
+            <a href="/"><img src="/images/Logos.png" class="just-eat-logo"></a>
+        </div>
+        <h2 class="title">Menu</h2>
+
+        <div class="ui-field-contain">
+            <label for="select-native-2">BBQ Pizza</label>
+
+            <select id="bbq_pizza_qty" name="select-native-2" class="select-dish" data-mini="true">
+                <option value=""></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <button id="addToCartBBQ" class="add-to-card"> Add To Card </button>
+
+        </div>
+
+        <div class="ui-field-contain">
+            <label for="select-native-2">NY Pizza</label>
+
+            <select id="ny_pizza_qty" name="select-native-2" class="select-dish" data-mini="true">
+                <option value=""></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <button id="addToCartNy" class="add-to-card"> Add To Card </button>
+        </div>
+
+        <div class="ui-field-contain">
+            <label for="select-native-2">Hamburger</label>
+
+            <select id="hamburger_qty" name="select-native-2" class="select-dish" data-mini="true">
+                <option value=""></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <button id="addToCartHamburger" class="add-to-card"> Add To Card </button>
+        </div>
+
+        <div class="ui-field-contain">
+            <label for="select-native-2">Taco</label>
+
+            <select id="taco_qty" name="select-native-2" class="select-dish" data-mini="true">
+                <option value=""></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <button id="addToCartTaco" class="add-to-card"> Add To Card </button>
+        </div>
+
+        <div class="ui-field-contain">
+            <label for="select-native-2">Kebab</label>
+
+            <select id="kebab_qty" name="select-native-2" class="select-dish" data-mini="true">
+                <option value=""></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <button id="addToCartKebab" class="add-to-card"> Add To Card </button>
+        </div>
+    </div>
+    <button id="checkout" disabled>Checkout</button>
+</div>
+
+<div data-role="page" id="cook">
+    <div role="header">
+        <a href="/"><img src="/images/Logos.png" class="just-eat-logo"></a>
+    </div>
+
+    <h2 class="title">Cook</h2>
+
+    <div id="productOutput" class="cook-form"></div>
+</div>
+
+<div data-role="page" id="manager">
+    <div role="header">
+        <a href="/"><img src="/images/Logos.png" class="just-eat-logo"></a>
+    </div>
+
+    <h2>Manager</h2>
+
+    <table id="managerTable">
+        <thead>
+        <tr>
+            <th><b>Product Ordered</b></th>
+            <th><b>Quantity</b></th>
+            <th><b>Price</b></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <div id="managerOutput"></div>
+</div>
+
+<div data-role="page" id="orderReview">
+    <div role="header">
+        <a href="/"><img src="/images/Logos.png" class="just-eat-logo"></a>
+    </div>
+    <table id="orderReviewTable">
+        <thead>
+            <tr>
+                <th><b>Product Name</b></th>
+                <th><b>Quantity</b></th>
+                <th><b>Price</b></th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <div id="orderOutput"></div>
+    <button id="pay">Pay</button>
+</div>
+
+<div data-role="page" id="register">
+    <div role="header">
+        <a href="/"><img src="/images/Logos.png" class="just-eat-logo"></a>
+    </div>
+
+    <div class="register-form">
+        <div data-role="fieldcontain">
+            <label for="username">Username</label>
+            <input type="text" id="registerUsername"/>
+        </div>
+
+        <div data-role="fieldcontain">
+            <label for="password">Password</label><input type="password" id="registerPassword"/>
+        </div>
+
+        <div data-role="fieldcontain">
+            <label for="confirmPassword">Confirm Password</label><input type="password" id="registerConfirmPassword"/>
+        </div>
+    </div>
+
+    <button class="ui-btn" id="signUpButton">Sign up</button>
+</div>
+
+</body>
+</html>
