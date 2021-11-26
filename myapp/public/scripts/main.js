@@ -4,7 +4,6 @@ function addMyCard($item){
 
     // dynamically find out the qty
     let $qty = $('#'+$item).children("option:selected").val();
-
     // search the cart and see if we already added
     // the item. If we did, remove the old qty.
     myCard.forEach(function(itemCurrent) {
@@ -164,6 +163,5 @@ $(window).on('load', function (){
             .fail(function(){
                 alert("Something went wrong...");
             });
-
     })
 });
